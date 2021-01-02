@@ -6,21 +6,17 @@
 
 using namespace std;
 
-//waht do i want the event class to do?
-    //FightDragon(entity player)
-    //FightBear
-    //
+//This class is a place to add new events as functions. Essentially, its a bundle of functions, no variables
+    //example: event eventTotal.FightBear(entity player)
 
 
 class event{
 
     public:
-
+    //events here
 
     private:
-    string initialMessage;
-    //tree of decisions? vector?
-
+    int numEventsCompleted;
 
 };
 
