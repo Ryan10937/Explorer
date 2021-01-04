@@ -11,8 +11,9 @@ class entity{
 
     public:
     //mutators and accessors
-    void ShowMap(vector<vector<spot*> > map);
-    void Move(string direction, vector<vector<spot*> > map);
+    entity();
+    void ShowMap(vector<vector<spot*>* >* map);
+    void Move(string direction, vector<vector<spot*>* >* map);
     string PromptPlayer(string prompt);
     void Attack(entity* enemy);
     void EquipWeapon(item* weapon);

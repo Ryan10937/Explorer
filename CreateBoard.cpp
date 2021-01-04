@@ -27,8 +27,8 @@ vector<vector<spot*>* >* CreateBoard(int boardSize){
         }
         board->push_back(tempRow);
     }
-    here(board->size());
-    ((board->at(20))->at(20))->SetDisplayChar('R');
+    //here(board->size());
+
 
     return board;
 
