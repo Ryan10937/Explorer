@@ -13,11 +13,6 @@ vector<vector<spot*>* >* CreateBoard(int boardSize){
     vector<spot*>* tempRow;
     spot* tempSpot;
     
-    
-    here(1);
-    
-    
-    here(2);
     for(int i=0; i<boardSize;i++){
         tempRow = new vector<spot*>;
         for(int j=0; j<boardSize;j++){
@@ -27,7 +22,7 @@ vector<vector<spot*>* >* CreateBoard(int boardSize){
         }
         board->push_back(tempRow);
     }
-    //here(board->size());
+    
 
 
     return board;

@@ -9,7 +9,7 @@ using namespace std;
 
 int main(){
     int boardSize = 20;
-    cout <<"Hello World"<<endl;
+
     vector<vector<spot*>* >* board = CreateBoard(boardSize);
     entity* player = new entity;
 

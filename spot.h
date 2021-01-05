@@ -5,6 +5,7 @@
 
 #include"event.h"
 #include"iAmHere.h"
+#include"entity.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ class spot{
     pair<int,int> position;
     string type;
     bool hasPlayer;
+    entity* player;
 };
 
 
