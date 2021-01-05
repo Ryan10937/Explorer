@@ -7,7 +7,7 @@
 using namespace std;
 
 spot::spot(){
-    displayChar = 'X';
+    displayChar = ' ';
     eventCollection = new event;
     position = make_pair(-1,-1);
     type = "noType";

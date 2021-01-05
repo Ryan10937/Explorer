@@ -63,7 +63,7 @@ void board::AddNewEntity(entity* player, int xPos, int yPos){
 void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
     char blockChar = 'a'+122;
-    char fogOfWarChar = 'X';
+    char fogOfWarChar = ' ';
     
     //update grid
     if(direction == "w" ){

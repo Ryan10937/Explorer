@@ -43,6 +43,3 @@ void entity::EquipWeapon(item* weapon){
 
 }
 
-
-
-
