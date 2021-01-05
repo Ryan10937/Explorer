@@ -7,19 +7,20 @@
 #include"entity.h"
 #include"iAmHere.h"
 
-board::board(int boardSize){
+board::board(int boardHeight, int boardWidth){
     //create board
     grid = new vector<vector<spot*>* >;
     vector<spot*>* tempRow;
     spot* tempSpot;
-    
-    for(int i=0; i<boardSize;i++){
+    char borderChar = 219;
+
+    for(int i=0; i<boardHeight;i++){
         tempRow = new vector<spot*>;
-        for(int j=0; j<boardSize;j++){
+        for(int j=0; j<boardWidth;j++){
             tempSpot = new spot;
             tempSpot->SetPosition(i,j);
-            if(i == 0 || i == boardSize-1 || j==0 || j ==boardSize-1){
-                tempSpot->SetDisplayChar(219);
+            if(i == 0 || i == boardHeight-1 || j==0 || j ==boardWidth-1){
+                tempSpot->SetDisplayChar(borderChar);
             }
             tempRow->push_back(tempSpot);
         }
@@ -29,8 +30,14 @@ board::board(int boardSize){
 vector<vector<spot*>*>* board::GetGrid(){
     return grid;
 }
-void board::AddNewEntity(){
+void board::AddNewEntity(int xPos, int yPos){
     //add general entity to a new spot
+    entity* player = new entity;
+
+    ((grid->at(yPos))->at(xPos))->SetEntity(player);
+
+    //update position in player also
+    player->SetPosition(xPos,yPos);
 
 }
 void board::AddNewEntity(entity* player){
@@ -56,6 +63,7 @@ void board::AddNewEntity(entity* player, int xPos, int yPos){
 void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
     char blockChar = 'a'+122;
+    char fogOfWarChar = 'X';
     
     //update grid
     if(direction == "w" ){
@@ -64,9 +72,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "up";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('X');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
         position.second = position.second - 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('O');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
 
     }
     if(direction == "a" ){
@@ -75,9 +83,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "left";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('X');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
         position.first = position.first - 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('O');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
 
     }
     if(direction == "s" ){
@@ -86,9 +94,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "down";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('X');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
         position.second = position.second + 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('O');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
 
     }
     if(direction == "d" ){
@@ -97,9 +105,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "right";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('X');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
         position.first = position.first + 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar('O');
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
     }
     player->SetPosition(position);
 
@@ -113,7 +121,7 @@ void board::PrintGrid(){
     cout <<"\n\n\n\n\n\n\n";
     //print grid to console
     for(int i=0; i<grid->size();i++){
-        for(int j=0; j<grid->size();j++){
+        for(int j=0; j<(grid->at(i))->size();j++){
             
             cout <<((grid->at(i))->at(j))->GetDisplayChar()<<" ";
         }

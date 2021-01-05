@@ -9,21 +9,26 @@
 using namespace std;
 
 int main(){
-    int boardSize = 20;
+    int boardHeight = 20;
+    int boardWidth = 50;
+    char playerChar = 'O';
 
     //vector<vector<spot*>* >* board = CreateBoard(boardSize);
     entity* player = new entity;
-    player->SetDisplayChar('O');
-    board* gameMap = new board(boardSize);
-
-    gameMap->AddNewEntity(player,18,1);
+    player->SetDisplayChar(playerChar);
+    board* gameMap = new board(boardHeight,boardWidth);
+    here(1);
+    gameMap->AddNewEntity(player,10,15);
     gameMap->PrintGrid();
+
+    
 
     bool isQuitting = false;
     int loopBreaker = 0;
     cout << "Use WASD to move" << endl;
     while(isQuitting == false){
         isQuitting = gameMap->PromptPlayer(" ",player);
+        here(2);
         gameMap->PrintGrid();
 
         loopBreaker++;

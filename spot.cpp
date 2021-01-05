@@ -27,6 +27,15 @@ event* spot::GetEventCollection(){
 void spot::SetEventCollection(event* eventCollection){
     this->eventCollection = eventCollection;
 }
+bool spot::GetHasEvent(){
+    return hasEvent;
+}
+void spot::SetHasEvent(bool hasEvent){
+    this->hasEvent = hasEvent;
+}
+void spot::FlipHasEvent(){
+    hasEvent = !hasEvent;
+}
 pair<int,int> spot::GetPosition(){
     return position;
 }

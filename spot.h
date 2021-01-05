@@ -20,6 +20,9 @@ class spot{
     void SetDisplayChar(char displayChar);
     event* GetEventCollection();
     void SetEventCollection(event* eventCollection);
+    bool GetHasEvent();
+    void SetHasEvent(bool hasEvent);
+    void FlipHasEvent();
     pair<int,int> GetPosition();
     void SetPosition(pair<int,int> position);
     void SetPosition(int xPos, int yPos);
@@ -37,6 +40,7 @@ class spot{
     private:
     char displayChar;
     event* eventCollection;
+    bool hasEvent;
     pair<int,int> position;
     string type;
     bool hasPlayer;

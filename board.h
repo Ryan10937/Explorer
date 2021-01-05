@@ -12,9 +12,9 @@ using namespace std;
 class board{
 
     public:
-    board(int boardSize);
+    board(int boardHeight, int boardWidth);
     vector<vector<spot*>*>* GetGrid();
-    void AddNewEntity();
+    void AddNewEntity(int xPos, int yPos);
     void AddNewEntity(entity* player);
     void AddNewEntity(entity* player, pair<int,int> position);
     void AddNewEntity(entity* player, int xPos, int yPos);
