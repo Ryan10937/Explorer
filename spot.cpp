@@ -1,6 +1,7 @@
-#include"spot.h"
 #include<vector>
 #include<string>
+#include"spot.h"
+#include"entity.h"
 #include"iAmHere.h"
 
 using namespace std;
@@ -11,6 +12,7 @@ spot::spot(){
     position = make_pair(-1,-1);
     type = "noType";
     hasPlayer = false;
+    entity* player = nullptr;
 }
 
 char spot::GetDisplayChar(){
@@ -46,4 +48,15 @@ bool spot::GetHasPlayer(){
 }
 void spot::SetHasPlayer(bool hasPlayer){
     this->hasPlayer = hasPlayer;
+}
+
+entity* spot::GetEntity(){
+    return player;
+}
+void spot::SetEntity(entity* player){
+    this->player = player;
+    displayChar = player->GetDisplayChar();
+}
+void spot::RemoveEntity(){//sets entity pointer to null
+    this->player = nullptr;
 }

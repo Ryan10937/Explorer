@@ -4,29 +4,33 @@
 
 #include"CreateBoard.h"
 #include"entity.h"
+#include"board.h"
 
 using namespace std;
 
 int main(){
     int boardSize = 20;
 
-    vector<vector<spot*>* >* board = CreateBoard(boardSize);
+    //vector<vector<spot*>* >* board = CreateBoard(boardSize);
     entity* player = new entity;
+    player->SetDisplayChar('O');
+    board* gameMap = new board(boardSize);
 
-    for(int i=0; i<boardSize;i++){
-        for(int j=0; j<boardSize;j++){
-            
-            cout <<((board->at(i))->at(j))->GetDisplayChar()<<" ";
-        }
-        cout <<endl;
-    }
+    gameMap->AddNewEntity(player,18,1);
+    gameMap->PrintGrid();
 
-    string moveChar;
+    bool isQuitting = false;
+    int loopBreaker = 0;
     cout << "Use WASD to move" << endl;
-    for(int i=0;i<8;i++){
-        moveChar = player->PromptPlayer(" ");
-        player->Move(moveChar,board);
-        player->ShowMap(board);
+    while(isQuitting == false){
+        isQuitting = gameMap->PromptPlayer(" ",player);
+        gameMap->PrintGrid();
+
+        loopBreaker++;
+        if(loopBreaker > 2000){
+            cout <<"Loop break triggered" << endl;
+            break;
+        }
     }
     return 0;
 }

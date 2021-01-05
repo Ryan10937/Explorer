@@ -1,3 +1,6 @@
+#ifndef BOARD_H
+#define BOARD_H
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -12,13 +15,16 @@ class board{
     board(int boardSize);
     vector<vector<spot*>*>* GetGrid();
     void AddNewEntity();
-    void AddNewEntity(entity player);
-    void AddNewEntity(entity player, pair<int,int> position);
-    void AddNewEntity(entity player, int xPos, int yPos);
-    void MoveEntity(string direction, entity player);
+    void AddNewEntity(entity* player);
+    void AddNewEntity(entity* player, pair<int,int> position);
+    void AddNewEntity(entity* player, int xPos, int yPos);
+    void MoveEntity(string direction, entity* player);
     void PrintGrid();
+    bool PromptPlayer(string prompt, entity* player);
+
     
 
     private:
     vector<vector<spot*>*>* grid;
 };
+#endif

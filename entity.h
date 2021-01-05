@@ -1,9 +1,10 @@
-#ifndef EXPLORER_H
-#define EXPLORER_H
+#ifndef ENTITY_H
+#define ENTITY_H
 
 #include<string>
+#include<vector>
 #include"item.h"
-#include"spot.h"
+//#include"spot.h"
 
 using namespace std;
 
@@ -12,8 +13,13 @@ class entity{
     public:
     //mutators and accessors
     entity();
-    void ShowMap(vector<vector<spot*>* >* map);
-    void Move(string direction, vector<vector<spot*>* >* map);
+    pair<int,int> GetPosition();
+    void SetPosition(pair<int,int> position);
+    void SetPosition(int xPos, int yPos);
+    char GetDisplayChar();
+    void SetDisplayChar(char displayChar);
+    //void ShowMap(vector<vector<spot*>*>* map);
+    //void Move(string direction, vector<vector<spot*>*>* map);
     string PromptPlayer(string prompt);
     void Attack(entity* enemy);
     void EquipWeapon(item* weapon);
@@ -25,6 +31,7 @@ class entity{
     pair<int,int> position;
     item* weapon;
     string faction;
+    char displayChar;
 
 
 };

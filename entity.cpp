@@ -4,6 +4,7 @@
 #include<string>
 #include<vector>
 #include<iomanip>
+#include"spot.h"
 
 using namespace std;
 
@@ -13,83 +14,26 @@ entity::entity(){
     this->position = make_pair(10,10);
     this->weapon = new item;
     this->faction = "Nature";
+    this->displayChar = 'D';
 }
 
-void entity::ShowMap(vector<vector<spot*>* >* map){
-    int width = map->size() + 2;
-    
-    cout <<setfill('=')<< setw(width) <<"=" <<endl;
-    setfill(' '); 
-    setw(1);
-    
-    cout <<"0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9"<<endl;
-
-    for(int i=0;i<map->size();i++){
-        for(int j=0;j<(map->at(i))->size();j++){
-            cout<< ((map->at(i))->at(j))->GetDisplayChar() << " ";
-        }
-        cout<<endl;
-    }
-
-    
-    cout <<setfill('=')<< setw(width) <<"=" <<endl;
-    setfill(' '); 
-    setw(1);
-    
+pair<int,int> entity::GetPosition(){
+    return position;
 }
-void entity::Move(string direction, vector<vector<spot*>* >* map){
-    if(direction == "w" ){
-        //direction == "up";
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('X');
-        position.second = position.second - 1;
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('O');
-
-    }
-    if(direction == "a" ){
-        //direction == "left";
-        cout<<"first before: " << position.first << endl;
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('X');
-        position.first = position.first - 1;
-        cout<<"first after: " << position.first << endl;
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('O');
-
-    }
-    if(direction == "s" ){
-        //direction == "down";
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('X');
-        position.second = position.second + 1;
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('O');
-
-    }
-    if(direction == "d" ){
-        //direction == "right";
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('X');
-        position.first = position.first + 1;
-        ((map->at(position.second))->at(position.first))->SetDisplayChar('O');
-    }
-
+void entity::SetPosition(pair<int,int> position){
+    this->position = position;
 }
-string entity::PromptPlayer(string prompt){
-    string answer;
-    int width = 20;
-    
-    
-    cout <<setfill('=')<< setw(width) <<"=" <<endl;
-    setfill(' '); 
-    setw(1);
-    
-
-    cout << prompt << endl;
-    cin >> answer;
-
-    
-    cout <<setfill('=')<< setw(width) <<"=" <<endl;
-    setfill(' '); 
-    setw(1);
-    
-
-    return answer;
+void entity::SetPosition(int xPos, int yPos){
+    (this->position).first = xPos;
+    (this->position).second = yPos;
 }
+char entity::GetDisplayChar(){
+    return displayChar;
+}
+void entity::SetDisplayChar(char displayChar){
+    this->displayChar = displayChar;
+}
+
 void entity::Attack(entity* enemy){
     enemy->currentHealth = enemy->currentHealth - weapon->damage;
 }

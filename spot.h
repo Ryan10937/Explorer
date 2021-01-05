@@ -27,6 +27,10 @@ class spot{
     void SetType(string type);
     bool GetHasPlayer();
     void SetHasPlayer(bool hasPlayer);
+    entity* GetEntity();
+    void SetEntity(entity* player);
+    void RemoveEntity();//sets entity pointer to null
+
 
     //callEvent();
 
