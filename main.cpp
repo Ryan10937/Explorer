@@ -13,7 +13,6 @@ int main(){
     int boardWidth = 50;
     char playerChar = 'O';
 
-    //vector<vector<spot*>* >* board = CreateBoard(boardSize);
     entity* player = new entity;
     player->SetDisplayChar(playerChar);
     board* gameMap = new board(boardHeight,boardWidth);
@@ -28,7 +27,6 @@ int main(){
     cout << "Use WASD to move" << endl;
     while(isQuitting == false){
         isQuitting = gameMap->PromptPlayer(" ",player);
-        here(2);
         gameMap->PrintGrid();
 
         loopBreaker++;
@@ -37,5 +35,8 @@ int main(){
             break;
         }
     }
+
+    delete(player);
+    delete(gameMap);
     return 0;
 }

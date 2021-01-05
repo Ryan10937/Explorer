@@ -161,3 +161,12 @@ bool board::PromptPlayer(string prompt, entity* player){
     return false;
     
 }
+board::~board(){
+    for(int i=0;i<grid->size();i++){
+        for(int j=0;j<(grid->at(i))->size();j++){
+            delete((grid->at(i))->at(j));
+        }
+        delete(grid->at(i));
+    }
+    delete(grid);
+}

@@ -42,4 +42,3 @@ void entity::EquipWeapon(item* weapon){
     this->weapon = weapon;
 
 }
-

@@ -21,6 +21,7 @@ class board{
     void MoveEntity(string direction, entity* player);
     void PrintGrid();
     bool PromptPlayer(string prompt, entity* player);
+    ~board();
 
     
 
