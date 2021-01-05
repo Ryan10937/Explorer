@@ -20,14 +20,12 @@ int main(){
     gameMap->AddNewEntity(player,10,15);
     gameMap->PrintGrid();
 
-    
-
     bool isQuitting = false;
     int loopBreaker = 0;
-    cout << "Use WASD to move" << endl;
+    cout << "Use WASD to move and M to view map" << endl;
     while(isQuitting == false){
         isQuitting = gameMap->PromptPlayer(" ",player);
-        gameMap->PrintGrid();
+        //gameMap->PrintGrid();
 
         loopBreaker++;
         if(loopBreaker > 2000){
