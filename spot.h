@@ -13,7 +13,7 @@ class spot{
 
     public:
     //constructor
-    spot();
+    spot(char fogOfWarChar);
     //mutators
     //accessors
     char GetDisplayChar();

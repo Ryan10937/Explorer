@@ -6,8 +6,8 @@
 
 using namespace std;
 
-spot::spot(){
-    displayChar = ' ';
+spot::spot(char fogOfWarChar){
+    displayChar = fogOfWarChar;
     eventCollection = new event;
     position = make_pair(-1,-1);
     type = "noType";

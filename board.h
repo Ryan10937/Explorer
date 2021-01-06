@@ -27,5 +27,6 @@ class board{
 
     private:
     vector<vector<spot*>*>* grid;
+    char fogOfWar;
 };
 #endif

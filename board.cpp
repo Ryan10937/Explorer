@@ -13,11 +13,12 @@ board::board(int boardHeight, int boardWidth){
     vector<spot*>* tempRow;
     spot* tempSpot;
     char borderChar = 219;
+    fogOfWar = 177;
 
     for(int i=0; i<boardHeight;i++){
         tempRow = new vector<spot*>;
         for(int j=0; j<boardWidth;j++){
-            tempSpot = new spot;
+            tempSpot = new spot(fogOfWar);
             tempSpot->SetPosition(i,j);
             if(i == 0 || i == boardHeight-1 || j==0 || j ==boardWidth-1){
                 tempSpot->SetDisplayChar(borderChar);
@@ -63,7 +64,7 @@ void board::AddNewEntity(entity* player, int xPos, int yPos){
 void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
     char blockChar = 'a'+122;
-    char fogOfWarChar = ' ';
+    char fogOfWarChar = fogOfWar;
     
     //update grid
     if(direction == "w" ){
@@ -123,7 +124,8 @@ void board::PrintGrid(){
     for(int i=0; i<grid->size();i++){
         for(int j=0; j<(grid->at(i))->size();j++){
             
-            cout <<((grid->at(i))->at(j))->GetDisplayChar()<<" ";
+            //cout <<((grid->at(i))->at(j))->GetDisplayChar()<<" ";
+            cout <<((grid->at(i))->at(j))->GetDisplayChar();
         }
         cout <<endl;
     }

@@ -6,18 +6,21 @@
 
 using namespace std;
 
-//This class is a place to add new events as functions. Essentially, its a bundle of functions, no variables
-    //example: event eventTotal.FightBear(entity player)
-
-
+//this is the master parent class for all other quests/events
 class event{
 
     public:
     //events here
+    int GetEventID();
+    void SetEventID(int ID);
+    bool GetIsCompleted();
+    void SetIsCompleted(bool isCompleted);
+    void GreetingMessage(string greeting);
     
 
     private:
-    int numEventsCompleted;
+    int eventID;
+    bool isCompleted;
 
 };
 
