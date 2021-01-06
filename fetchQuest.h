@@ -2,14 +2,16 @@
 #define FETCH_QUEST_H
 
 #include"event.h"
-#include"entity.h"
 #include"item.h"
+#include"entity.h"
+
 
 using namespace std;
 
 class fetchQuest : public event{
 
     public:
+    //mutators/accessors
 
     private:
     item* deliveryItem;
