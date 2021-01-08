@@ -1,12 +1,13 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include<string>
+#include <string>
+#include "ItemTypes.h"
 
-using namespace std;
-
-struct item{
-    string type;
+struct item
+{
+    std::string name;
+    ItemType Type;
     int ID;
     bool isOwnedByPlayer;
     int value;
